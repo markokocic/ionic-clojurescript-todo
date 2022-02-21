@@ -7,8 +7,19 @@
 		"build-report": "npx shadow-cljs run shadow.cljs.build-report app target/build-report.html"
 	},
 	"dependencies": {
+		"@capacitor/app": "^1.1.0",
+		"@capacitor/core": "^3.4.1",
+		"@capacitor/haptics": "^1.1.4",
+		"@capacitor/keyboard": "^1.2.2",
+		"@capacitor/status-bar": "^1.0.8",
+		"@ionic/react": "^6.0.8",
+		"@ionic/react-router": "^6.0.8",
+		"highlight.js": "11.1.0",
+		"ionicons": "^6.0.1",
 		"react": "17.0.2",
-		"react-dom": "17.0.2"
+		"react-dom": "17.0.2",
+		"react-router": "^6.2.1",
+		"react-router-dom": "^6.2.1"
 	},
 	"devDependencies": {
 		"shadow-cljs": "2.16.12"

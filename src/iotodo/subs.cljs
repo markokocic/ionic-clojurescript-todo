@@ -1,8 +1,8 @@
 (ns iotodo.subs
   (:require
-   [re-frame.core :as re-frame]))
+   [re-frame.core :as rf]))
 
-(re-frame/reg-sub
- ::name
- (fn [db]
-   (:name db)))
+(rf/reg-sub
+ :todos/all
+ (fn [db _]
+   (:todos db)))
