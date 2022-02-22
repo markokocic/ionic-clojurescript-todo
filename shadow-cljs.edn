@@ -23,6 +23,8 @@
   {:target     :browser
    :output-dir "resources/public/js/compiled"
    :asset-path "/js/compiled"
+   :js-options {:js-provider :external
+                :external-index "js/target/requires.js"}
    :modules
    {:app {:init-fn iotodo.core/init}}
    :devtools

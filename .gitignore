@@ -13,3 +13,7 @@
 
 # shadow-cljs cache, port files
 /.shadow-cljs/
+
+js/target
+resources/public/js
+

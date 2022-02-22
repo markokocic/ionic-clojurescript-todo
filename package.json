@@ -4,6 +4,7 @@
 		"ancient": "clojure -Sdeps '{:deps {com.github.liquidz/antq {:mvn/version \"RELEASE\"}}}' -m antq.core",
 		"watch": "npx shadow-cljs watch app browser-test karma-test",
 		"release": "npx shadow-cljs release app",
+		"pack": "webpack --watch",
 		"build-report": "npx shadow-cljs run shadow.cljs.build-report app target/build-report.html"
 	},
 	"dependencies": {
@@ -22,6 +23,9 @@
 		"react-router-dom": "^6.2.1"
 	},
 	"devDependencies": {
-		"shadow-cljs": "2.16.12"
+		"css-loader": "^6.6.0",
+		"shadow-cljs": "2.16.12",
+		"style-loader": "^3.3.1",
+		"webpack-cli": "^4.9.2"
 	}
 }
