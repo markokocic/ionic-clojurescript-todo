@@ -7,25 +7,25 @@
 		"build-report": "npx shadow-cljs run shadow.cljs.build-report app target/build-report.html"
 	},
 	"dependencies": {
-		"@capacitor/app": "^1.1.1",
-		"@capacitor/core": "^3.6.0",
-		"@capacitor/haptics": "1.1.4",
-		"@capacitor/keyboard": "^1.2.3",
-		"@capacitor/status-bar": "1.0.8",
-		"@ionic/react": "^6.1.15",
-		"@ionic/react-router": "^6.1.15",
-		"highlight.js": "11.6.0",
-		"ionicons": "^6.0.2",
+		"@capacitor/app": "^4.1.1",
+		"@capacitor/core": "^4.7.0",
+		"@capacitor/haptics": "4.1.0",
+		"@capacitor/keyboard": "^4.1.1",
+		"@capacitor/status-bar": "4.1.1",
+		"@ionic/react": "^6.6.2",
+		"@ionic/react-router": "^6.6.2",
+		"highlight.js": "11.7.0",
+		"ionicons": "^7.0.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-router": "^6.3.0",
-		"react-router-dom": "^6.3.0"
+		"react-router": "^6.9.0",
+		"react-router-dom": "^6.9.0"
 	},
 	"devDependencies": {
-		"css-loader": "^6.7.1",
-		"shadow-cljs": "2.19.6",
-		"style-loader": "3.3.1",
-		"webpack": "5.73.0",
-		"webpack-cli": "4.10.0"
+		"css-loader": "^6.7.3",
+		"shadow-cljs": "2.22.2",
+		"style-loader": "3.3.2",
+		"webpack": "5.76.1",
+		"webpack-cli": "5.0.1"
 	}
 }
