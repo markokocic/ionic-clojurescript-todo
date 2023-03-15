@@ -1,54 +1,57 @@
 (ns iotodo.views
   (:require
-   [reagent.core :as r]
-   [re-frame.core :as rf]
-   [ion.core :as ion]
+   ["@ionic/react" :as i]
    ["ionicons/icons" :as icons]
-   [iotodo.subs :as subs]))
-
-(defn- input-container []
-  (let [value (r/atom "")]
-    (fn []
-      [ion/item
-       [ion/textarea {:slot :start :placeholder "Todo ..."
-                      :auto-grow true :autofocus true
-                      :inputmode "text"
-                      :value @value
-                      :on-ion-change #(reset! value (.. % -detail -value))}]
-       [ion/button {:slot "end" :icon-only true
-                    :on-click (fn []
-                                (rf/dispatch [:todos/add @value])
-                                (reset! value ""))}
-        [ion/icon {:icon icons/add}]]])))
-
-(defn- todo-item [{:keys [key text checked]}]
-  [ion/item {:key key}
-   [ion/checkbox {:slot "start" :checked checked
-                  :on-ion-change #(rf/dispatch [:todos/check key])}]
-   [ion/text
-    {:style {:text-decoration (if checked :line-through :none)}} text]
-   
-   [ion/button {:slot "end" :icon-only true
-                :on-click #(rf/dispatch [:todos/delete key])}
-    [ion/icon {:icon icons/trash}]]])
+   [helix.core :refer [defnc $ <>]]
+   [helix.hooks :refer [use-state]]
+   [helix.dom :as d]
+   [refx.alpha :as rf]))
 
 
-(defn- todos []
-  (let [todos (rf/subscribe [:todos/all])]
-    [ion/list
-     [input-container]
-     (for [todo @todos]
-       [todo-item todo])]))
+(defnc input-container []
+  (let [[value set-value!] (use-state "")]
+    ($ i/IonItem
+       ($ i/IonTextarea {:slot "start" :placeholder "Todo ..."
+                         :autoGrow true :autofocus true
+                         :inputmode "text"
+                         :value value
+                         :onIonChange #(set-value! (.. % -detail -value))})
+       ($ i/IonButton {:slot "end" :iconOnly true
+                       :onClick (fn []
+                                  (rf/dispatch [:todos/add value])
+                                  (set-value! ""))}
+          ($ i/IonIcon {:icon icons/add})))))
 
-(defn- todo-screen []
-  [ion/app
-   [ion/header
-    [ion/toolbar
-     [ion/title "Todo List"]]]
-   [ion/content {:class "IosPadding"}
-    [ion/grid
-     [ion/row
-      [todos]]]]])
+
+(defnc todo-item [{:keys [id text checked]}]
+  ($ i/IonItem
+     ($ i/IonCheckbox
+        {:slot "start" :checked checked
+         :onIonChange #(rf/dispatch [:todos/check id])})
+     ($ i/IonText
+        {:style #js{:textDecoration (if checked "line-through" "none")}}
+        text)
+     ($ i/IonButton
+        {:slot "end" :iconOnly true
+         :onClick #(rf/dispatch [:todos/delete id])}
+        ($ i/IonIcon {:icon icons/trash}))))
+
+(defnc todos []
+  (let [todos (rf/use-sub [:todos/all])]
+    ($ i/IonList
+       ($ input-container)
+       (for [todo todos]
+         ($ todo-item {:key (:id todo) :& todo})))))
+
+(defnc todo-screen []
+  ($ i/IonApp
+     ($ i/IonHeader
+        ($ i/IonToolbar
+           ($ i/IonTitle "Todo List")))
+     ($ i/IonContent {:class "IosPadding"}
+        ($ i/IonGrid
+           ($ i/IonRow
+              ($ todos))))))
 
 (defn main-panel []
-  [todo-screen])     
+  ($ todo-screen))

@@ -1,8 +1,12 @@
 (ns iotodo.core
   (:require
-   [reagent.dom :as dom]
-   [re-frame.core :as rf]
-   [ion.core :as ion]
+   [refx.alpha :as rf]
+   ["react" :as react]
+   ["react-dom" :as react-dom]
+   ["react-dom/client" :refer [createRoot]]
+   ["@ionic/react" :as i]
+   [helix.core :refer [$]]
+   [iotodo.subs :as subs]
    [iotodo.events :as events]
    [iotodo.views :as views]
    [iotodo.config :as config]))
@@ -11,14 +15,14 @@
   (when config/debug?
     (println "dev mode")))
 
+(defonce root (createRoot (js/document.getElementById "app")))
+
 (defn ^:dev/after-load mount-root []
   (rf/clear-subscription-cache!)
-  (let [root-el (.getElementById js/document "app")]
-    (dom/unmount-component-at-node root-el)
-    (dom/render [views/main-panel] root-el)))
+  (.render root ($ views/main-panel)))
 
-(defn init []
-  (ion/setup-ionic-react)
+(defn ^:export init []
+  (i/setupIonicReact)
   (rf/dispatch-sync [::events/initialize-db])
   (dev-setup)
   (mount-root))

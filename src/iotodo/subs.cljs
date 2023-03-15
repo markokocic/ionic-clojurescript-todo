@@ -1,6 +1,6 @@
 (ns iotodo.subs
   (:require
-   [re-frame.core :as rf]))
+   [refx.alpha :as rf]))
 
 (rf/reg-sub
  :todos/all
