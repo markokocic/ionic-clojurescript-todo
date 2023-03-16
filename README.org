@@ -1,4 +1,8 @@
 
 Example Todo application that shows how to use [[https://clojurescript.org/][Clojurescript]] with the [[https://ionicframework.com/][Ionic Framework]].
 
-For more details take a look at the [[https://marko.euptera.com/posts/ionic-clojure-todo-example.html][corresponding blog post]] at [[https://marko.euptera.com/posts/ionic-clojure-todo-example.html][https://marko.euptera.com/posts/ionic-clojure-todo-example.html]]
+For more details take a look at the series of corresponding blog posts on my [[https://marko.euptera.com][blog]]:
+
+- Part 3 - [[https://marko.euptera.com/posts/ionic-clojure-helix.html][Developing Ionic application using Clojurescript and Helix - To-do App]]
+- Part 2 - [[https://marko.euptera.com/posts/ionic-clojure-todo-example.html][Developing Ionic application with Clojurescript - To-do App]]
+- Part 1 - [[https://marko.euptera.com/posts/ionic-clojure.html][Developing Ionic applications with Clojurescript]]
