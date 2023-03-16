@@ -48,7 +48,7 @@
      ($ i/IonHeader
         ($ i/IonToolbar
            ($ i/IonTitle "Todo List")))
-     ($ i/IonContent {:class "IosPadding"}
+     ($ i/IonContent {:class "ion-padding"}
         ($ i/IonGrid
            ($ i/IonRow
               ($ todos))))))
