@@ -2,7 +2,7 @@
   (:require
    [refx.alpha :as rf]
    ["react" :as react]
-   ["react-dom" :as react-dom]
+   ;; ["react-dom" :as react-dom]
    ["react-dom/client" :refer [createRoot]]
    ["@ionic/react" :as i]
    [helix.core :refer [$]]
